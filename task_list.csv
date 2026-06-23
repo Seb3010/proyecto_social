@@ -1,26 +1,44 @@
-id,phase,task,description,depends_on,priority,status
-T01,bootstrap,Crear estructura MVC base,Crear carpetas iniciales para controllers models templates static e instance,,alta,completed
-T02,bootstrap,Crear entrypoint Flask,Crear app base de Flask con configuracion inicial,T01,alta,completed
-T03,database,Configurar sqlite3,Definir conexion basica usando sqlite3 de la libreria estandar,T02,alta,completed
-T04,database,Crear esquema inicial,Crear tablas scholarships y admin_users,T03,alta,completed
-T05,modelado,Implementar modelo de becas,Agregar operaciones SQL basicas para scholarships,T04,alta,completed
-T06,modelado,Implementar modelo de admin,Agregar operaciones SQL basicas para admin_users,T04,alta,pending
-T07,publico,Crear listado publico,Implementar ruta y template para mostrar becas publicadas,T05,alta,pending
-T08,publico,Crear detalle publico,Implementar ruta y template para detalle de beca,T05,alta,pending
-T09,auth,Implementar login admin,Crear formulario y validacion de acceso para admin,T06,alta,pending
-T10,auth,Implementar logout admin,Cerrar sesion de admin de forma segura,T09,media,pending
-T11,auth,Proteger rutas admin,Agregar control de sesion para rutas privadas,T09,alta,pending
-T12,admin,Crear dashboard admin,Mostrar vista inicial del panel admin,T11,media,pending
-T13,admin,Crear formulario nueva beca,Implementar vista y ruta para alta de becas,T11,alta,pending
-T14,admin,Guardar nueva beca,Procesar formulario y persistir beca en SQLite,T13,alta,pending
-T15,admin,Crear formulario editar beca,Implementar vista y ruta para editar becas existentes,T11,alta,pending
-T16,admin,Actualizar beca,Procesar formulario y actualizar beca en SQLite,T15,alta,pending
-T17,validacion,Agregar validaciones basicas,Validar campos requeridos y formatos minimos,T14|T16,media,pending
-T18,ux,Agregar mensajes flash,Mostrar mensajes de exito y error en login y formularios,T09|T14|T16,media,pending
-T19,ui,Aplicar estilos publicos basicos,Crear CSS simple para listado y detalle publico,T07|T08,baja,pending
-T20,ui,Aplicar estilos admin basicos,Crear CSS simple para login dashboard y formularios admin,T12|T13|T15,baja,pending
-T21,js,Agregar JS minimo si hace falta,Usar vanilla JS solo para interacciones realmente necesarias,T19|T20,baja,pending
-T22,seguridad,Hash de contrasenas admin,Asegurar almacenamiento de password con hash seguro,T09,alta,pending
-T23,datos,Definir estado de publicacion,Asegurar que solo becas publicadas aparezcan en la vista publica,T05|T07,alta,pending
-T24,verificacion,Probar flujo publico,Verificar listado y detalle de becas publicadas,T07|T08|T23,media,pending
-T25,verificacion,Probar flujo admin,Verificar login alta y edicion de becas,T09|T14|T16|T22,media,pending
+[ ] = pendiente  |  [x] = completada
+
+BASE DE DATOS
+  [x] T01 - Crear estructura MVC base - Crear carpetas controllers, models, templates, static, instance
+  [x] T02 - Crear entrypoint Flask - Crear app base de Flask con configuracion inicial (depende: T01, prioridad: alta)
+  [x] T03 - Configurar sqlite3 - Conexion basica con sqlite3 estandar (depende: T02, prioridad: alta)
+  [x] T04 - Crear esquema inicial - Tablas scholarships y admin_users (depende: T03, prioridad: alta)
+
+MODELOS
+  [x] T05 - Modelo de becas - CRUD + search para scholarships (depende: T04, prioridad: alta)
+  [x] T06 - Modelo de admin - get_by_username, get_by_id, create (depende: T04, prioridad: alta)
+
+VISTA PUBLICA
+  [ ] T07 - Crear listado publico - Ruta y template para becas publicadas (depende: T05, prioridad: alta)
+  [ ] T08 - Crear detalle publico - Ruta y template para detalle de beca (depende: T05, prioridad: alta)
+
+AUTENTICACION
+  [ ] T09 - Login admin - Formulario y validacion de acceso (depende: T06, prioridad: alta)
+  [ ] T10 - Logout admin - Cerrar sesion de forma segura (depende: T09, prioridad: media)
+  [ ] T11 - Proteger rutas admin - Control de sesion para rutas privadas (depende: T09, prioridad: alta)
+
+PANEL ADMIN
+  [ ] T12 - Dashboard admin - Vista inicial del panel (depende: T11, prioridad: media)
+  [ ] T13 - Formulario nueva beca - Vista y ruta para alta (depende: T11, prioridad: alta)
+  [ ] T14 - Guardar nueva beca - Procesar formulario y persistir en SQLite (depende: T13, prioridad: alta)
+  [ ] T15 - Formulario editar beca - Vista y ruta para editar (depende: T11, prioridad: alta)
+  [ ] T16 - Actualizar beca - Procesar formulario y actualizar en SQLite (depende: T15, prioridad: alta)
+
+VALIDACION Y UX
+  [ ] T17 - Validaciones basicas - Campos requeridos y formatos minimos (depende: T14|T16, prioridad: media)
+  [ ] T18 - Mensajes flash - Exito y error en login y formularios (depende: T09|T14|T16, prioridad: media)
+
+ESTILOS
+  [ ] T19 - Estilos publicos - CSS para listado y detalle (depende: T07|T08, prioridad: baja)
+  [ ] T20 - Estilos admin - CSS para login, dashboard y formularios (depende: T12|T13|T15, prioridad: baja)
+  [ ] T21 - JS minimo - Vanilla JS solo si hace falta (depende: T19|T20, prioridad: baja)
+
+SEGURIDAD
+  [ ] T22 - Hash contrasenas - Almacenar password con hash seguro (depende: T09, prioridad: alta)
+  [ ] T23 - Estado publicacion - Solo becas publicadas en vista publica (depende: T05|T07, prioridad: alta)
+
+VERIFICACION
+  [ ] T24 - Probar flujo publico - Listado y detalle de becas (depende: T07|T08|T23, prioridad: media)
+  [ ] T25 - Probar flujo admin - Login, alta y edicion (depende: T09|T14|T16|T22, prioridad: media)
