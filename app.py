@@ -3,12 +3,14 @@ app.py - Entrypoint de la aplicación Flask.
 
 Arquitectura MVC para el sistema de becas.
 T02: Bootstrap mínimo del entrypoint Flask.
-Siguiente: T03 - Configurar conexión SQLite.
+T03: Conexión SQLite configurada.
+T07: Blueprint de listado público + búsqueda registrado.
 """
 
 import os
 from flask import Flask
 from models.db import init_app
+from controllers.becas import becas_bp
 
 app = Flask(__name__, instance_relative_config=True)
 
@@ -28,15 +30,8 @@ os.makedirs(app.instance_path, exist_ok=True)
 # Inicializar helper de base de datos SQLite (T03).
 init_app(app)
 
-
-# ---------------------------------------------------------------------------
-# Placeholder temporal - T02/T03
-# Se reemplazará con rutas reales en T07 (listado público) y T12+ (admin).
-# ---------------------------------------------------------------------------
-@app.route('/')
-def index():
-    """Confirma que el servidor Flask arrancó correctamente."""
-    return 'Servidor funcionando. Proximamente: listado de becas.'
+# Registrar blueprint de rutas públicas (T07).
+app.register_blueprint(becas_bp)
 
 
 if __name__ == '__main__':

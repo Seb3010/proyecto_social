@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Becas Disponibles - Sistema de Becas{% endblock %}
+
+{% block content %}
+<h1>Becas Disponibles</h1>
+
+<form action="/buscar" method="GET">
+    <input type="text" name="q" value="{{ query }}" placeholder="Buscar becas...">
+    <button type="submit">Buscar</button>
+</form>
+
+{% if becas %}
+    {% for beca in becas %}
+    <article class="beca-card">
+        <h2><a href="/becas/{{ beca.id }}">{{ beca.title }}</a></h2>
+        <p>{{ beca.institution }}</p>
+        <p>{{ beca.location }}</p>
+        <p>Fecha límite: {{ beca.deadline }}</p>
+    </article>
+    {% endfor %}
+{% elif query %}
+    <p>No se encontraron becas para '{{ query }}'</p>
+{% else %}
+    <p>No hay becas publicadas actualmente.</p>
+{% endif %}
+{% endblock %}

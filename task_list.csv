@@ -11,7 +11,7 @@ MODELOS
   [x] T06 - Modelo de admin - get_by_username, get_by_id, create (depende: T04, prioridad: alta)
 
 VISTA PUBLICA
-  [ ] T07 - Crear listado publico - Ruta y template para becas publicadas (depende: T05, prioridad: alta)
+  [x] T07 - Crear listado publico - Ruta y template para becas publicadas (depende: T05, prioridad: alta)
   [ ] T08 - Crear detalle publico - Ruta y template para detalle de beca (depende: T05, prioridad: alta)
 
 AUTENTICACION
