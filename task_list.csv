@@ -16,7 +16,7 @@ VISTA PUBLICA
 
 AUTENTICACION
   [x] T09 - Login admin - Formulario y validacion de acceso (depende: T06, prioridad: alta)
-  [ ] T10 - Logout admin - Cerrar sesion de forma segura (depende: T09, prioridad: media)
+  [x] T10 - Logout admin - Cerrar sesion de forma segura (depende: T09, prioridad: media)
   [ ] T11 - Proteger rutas admin - Control de sesion para rutas privadas (depende: T09, prioridad: alta)
 
 PANEL ADMIN

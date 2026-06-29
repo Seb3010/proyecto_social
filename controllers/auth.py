@@ -29,3 +29,10 @@ def login():
             return redirect(url_for('auth.dashboard'))
 
     return render_template('login.html', error=error)
+
+
+@auth_bp.route('/admin/logout', methods=['POST'])
+def logout():
+    """Cierra la sesión del administrador."""
+    session.clear()
+    return redirect(url_for('auth.login'))
