@@ -12,10 +12,10 @@ MODELOS
 
 VISTA PUBLICA
   [x] T07 - Crear listado publico - Ruta y template para becas publicadas (depende: T05, prioridad: alta)
-  [ ] T08 - Crear detalle publico - Ruta y template para detalle de beca (depende: T05, prioridad: alta)
+  [x] T08 - Crear detalle publico - Ruta y template para detalle de beca (depende: T05, prioridad: alta)
 
 AUTENTICACION
-  [ ] T09 - Login admin - Formulario y validacion de acceso (depende: T06, prioridad: alta)
+  [x] T09 - Login admin - Formulario y validacion de acceso (depende: T06, prioridad: alta)
   [ ] T10 - Logout admin - Cerrar sesion de forma segura (depende: T09, prioridad: media)
   [ ] T11 - Proteger rutas admin - Control de sesion para rutas privadas (depende: T09, prioridad: alta)
 

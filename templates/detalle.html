@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}{{ beca.title }} - Sistema de Becas{% endblock %}
+
+{% block content %}
+<h1>{{ beca.title }}</h1>
+
+<p><strong>Institución:</strong> {{ beca.institution }}</p>
+<p><strong>Ubicación:</strong> {{ beca.location }}</p>
+<p><strong>Fecha límite:</strong> {{ beca.deadline }}</p>
+
+{% if beca.description %}
+<p><strong>Descripción:</strong></p>
+<p>{{ beca.description }}</p>
+{% endif %}
+
+{% if beca.requirements %}
+<p><strong>Requisitos:</strong></p>
+<p>{{ beca.requirements }}</p>
+{% endif %}
+
+{% if beca.link %}
+<p><a href="{{ beca.link }}" target="_blank">Más información</a></p>
+{% endif %}
+
+<a href="{{ url_for('becas.listado') }}">&larr; Volver al listado</a>
+{% endblock %}

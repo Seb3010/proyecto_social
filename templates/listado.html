@@ -13,7 +13,7 @@
 {% if becas %}
     {% for beca in becas %}
     <article class="beca-card">
-        <h2><a href="/becas/{{ beca.id }}">{{ beca.title }}</a></h2>
+        <h2><a href="{{ url_for('becas.detalle', beca_id=beca.id) }}">{{ beca.title }}</a></h2>
         <p>{{ beca.institution }}</p>
         <p>{{ beca.location }}</p>
         <p>Fecha límite: {{ beca.deadline }}</p>
