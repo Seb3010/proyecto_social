@@ -8,6 +8,7 @@ from flask import Blueprint, render_template, request, session, redirect, url_fo
 from models.db import get_db
 from models.admin import get_by_username
 from werkzeug.security import check_password_hash
+from controllers.decorators import login_required
 
 auth_bp = Blueprint('auth', __name__)
 
@@ -32,6 +33,7 @@ def login():
 
 
 @auth_bp.route('/admin/logout', methods=['POST'])
+@login_required
 def logout():
     """Cierra la sesión del administrador."""
     session.clear()
