@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Panel de Administración{% endblock %}
+
+{% block content %}
+<header>
+    <h1>Panel de Administración</h1>
+    <p>Bienvenido, {{ admin.username }}</p>
+    
+    <p>
+        <a href="{{ url_for('auth.nueva_beca') }}">+ Nueva beca</a>
+    </p>
+    
+    <form action="{{ url_for('auth.logout') }}" method="POST" style="display: inline;">
+        <button type="submit">Cerrar sesión</button>
+    </form>
+</header>
+
+<h2>Becas</h2>
+
+{% if becas %}
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for beca in becas %}
+            <tr>
+                <td><a href="{{ url_for('becas.detalle', beca_id=beca.id) }}">{{ beca.title }}</a></td>
+                <td>
+                    {% if beca.is_published == 1 %}
+                        Publicado
+                    {% else %}
+                        Borrador
+                    {% endif %}
+                </td>
+                <td><a href="{{ url_for('auth.editar_beca', beca_id=beca.id) }}">Editar</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No hay becas todavía.</p>
+{% endif %}
+{% endblock %}

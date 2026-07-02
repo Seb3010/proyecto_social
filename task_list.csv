@@ -20,10 +20,10 @@ AUTENTICACION
   [x] T11 - Proteger rutas admin - Control de sesion para rutas privadas (depende: T09, prioridad: alta)
 
 PANEL ADMIN
-  [ ] T12 - Dashboard admin - Vista inicial del panel (depende: T11, prioridad: media)
-  [ ] T13 - Formulario nueva beca - Vista y ruta para alta (depende: T11, prioridad: alta)
-  [ ] T14 - Guardar nueva beca - Procesar formulario y persistir en SQLite (depende: T13, prioridad: alta)
-  [ ] T15 - Formulario editar beca - Vista y ruta para editar (depende: T11, prioridad: alta)
+  [x] T12 - Dashboard admin - Vista inicial del panel (depende: T11, prioridad: media)
+  [x] T13 - Formulario nueva beca - Vista y ruta para alta (depende: T11, prioridad: alta)
+  [x] T14 - Guardar nueva beca - Procesar formulario y persistir en SQLite (depende: T13, prioridad: alta)
+  [x] T15 - Formulario editar beca - Vista y ruta para editar (depende: T11, prioridad: alta)
   [ ] T16 - Actualizar beca - Procesar formulario y actualizar en SQLite (depende: T15, prioridad: alta)
 
 VALIDACION Y UX
