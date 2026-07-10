@@ -24,10 +24,10 @@ PANEL ADMIN
   [x] T13 - Formulario nueva beca - Vista y ruta para alta (depende: T11, prioridad: alta)
   [x] T14 - Guardar nueva beca - Procesar formulario y persistir en SQLite (depende: T13, prioridad: alta)
   [x] T15 - Formulario editar beca - Vista y ruta para editar (depende: T11, prioridad: alta)
-  [ ] T16 - Actualizar beca - Procesar formulario y actualizar en SQLite (depende: T15, prioridad: alta)
+  [x] T16 - Actualizar beca - Procesar formulario y actualizar en SQLite (depende: T15, prioridad: alta)
 
 VALIDACION Y UX
-  [ ] T17 - Validaciones basicas - Campos requeridos y formatos minimos (depende: T14|T16, prioridad: media)
+  [x] T17 - Validaciones basicas - Campos requeridos y formatos minimos (depende: T14|T16, prioridad: media)
   [ ] T18 - Mensajes flash - Exito y error en login y formularios (depende: T09|T14|T16, prioridad: media)
 
 ESTILOS

@@ -9,38 +9,48 @@
     <h1>Nueva Beca</h1>
 {% endif %}
 
-<form action="{{ url_for('auth.editar_beca', beca_id=beca.id) if editando else url_for('auth.nueva_beca') }}" method="POST">
+{% if errores %}
+    <div class="errores">
+        <ul>
+        {% for error in errores %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+<form action="{{ url_for('auth.editar_beca', beca_id=beca['id']) if editando else url_for('auth.nueva_beca') }}" method="POST">
     <p>
         <label for="title">Título *</label>
-        <input type="text" id="title" name="title" value="{{ beca.title if editando else '' }}" required>
+        <input type="text" id="title" name="title" value="{{ beca['title'] if beca else '' }}" required>
     </p>
     <p>
         <label for="institution">Institución *</label>
-        <input type="text" id="institution" name="institution" value="{{ beca.institution if editando else '' }}" required>
+        <input type="text" id="institution" name="institution" value="{{ beca['institution'] if beca else '' }}" required>
     </p>
     <p>
         <label for="description">Descripción</label>
-        <textarea id="description" name="description" rows="4">{{ beca.description if editando else '' }}</textarea>
+        <textarea id="description" name="description" rows="4">{{ beca['description'] if beca else '' }}</textarea>
     </p>
     <p>
         <label for="requirements">Requisitos</label>
-        <textarea id="requirements" name="requirements" rows="4">{{ beca.requirements if editando else '' }}</textarea>
+        <textarea id="requirements" name="requirements" rows="4">{{ beca['requirements'] if beca else '' }}</textarea>
     </p>
     <p>
         <label for="deadline">Fecha límite</label>
-        <input type="text" id="deadline" name="deadline" value="{{ beca.deadline if editando else '' }}" placeholder="Ej: 2026-12-31">
+        <input type="text" id="deadline" name="deadline" value="{{ beca['deadline'] if beca else '' }}" placeholder="Ej: 2026-12-31">
     </p>
     <p>
         <label for="location">Ubicación</label>
-        <input type="text" id="location" name="location" value="{{ beca.location if editando else '' }}">
+        <input type="text" id="location" name="location" value="{{ beca['location'] if beca else '' }}">
     </p>
     <p>
         <label for="link">Link</label>
-        <input type="url" id="link" name="link" value="{{ beca.link if editando else '' }}">
+        <input type="url" id="link" name="link" value="{{ beca['link'] if beca else '' }}">
     </p>
     <p>
         <label for="is_published">Publicar inmediatamente</label>
-        <input type="checkbox" id="is_published" name="is_published" {% if editando and beca.is_published %}checked{% endif %}>
+        <input type="checkbox" id="is_published" name="is_published" {% if beca and beca['is_published'] %}checked{% endif %}>
     </p>
     <p>
         <button type="submit">{{ "Actualizar" if editando else "Crear beca" }}</button>
