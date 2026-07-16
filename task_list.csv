@@ -28,7 +28,7 @@ PANEL ADMIN
 
 VALIDACION Y UX
   [x] T17 - Validaciones basicas - Campos requeridos y formatos minimos (depende: T14|T16, prioridad: media)
-  [ ] T18 - Mensajes flash - Exito y error en login y formularios (depende: T09|T14|T16, prioridad: media)
+  [x] T18 - Mensajes flash - Exito y error en login y formularios (depende: T09|T14|T16, prioridad: media)
 
 ESTILOS
   [ ] T19 - Estilos publicos - CSS para listado y detalle (depende: T07|T08, prioridad: baja)

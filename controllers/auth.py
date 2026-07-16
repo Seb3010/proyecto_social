@@ -7,7 +7,7 @@ T13: Formulario y procesamiento de nueva beca.
 """
 
 import re
-from flask import Blueprint, render_template, request, session, redirect, url_for, abort
+from flask import Blueprint, render_template, request, session, redirect, url_for, abort, flash
 from models.db import get_db
 from models.admin import get_by_username, get_by_id
 from models.scholarship import get_all, create, update
@@ -40,7 +40,6 @@ def _validar_beca(data):
 @auth_bp.route('/admin/login', methods=['GET', 'POST'])
 def login():
     """Muestra formulario de login y procesa credenciales."""
-    error = None
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -48,12 +47,13 @@ def login():
         admin = get_by_username(db, username)
 
         if admin is None or not check_password_hash(admin['password_hash'], password):
-            error = 'Usuario o contraseña incorrectos'
+            flash('Usuario o contraseña incorrectos', 'error')
         else:
             session['admin_id'] = admin['id']
+            flash('Bienvenido al panel', 'success')
             return redirect(url_for('auth.dashboard'))
 
-    return render_template('login.html', error=error)
+    return render_template('login.html')
 
 
 @auth_bp.route('/admin')
@@ -86,6 +86,7 @@ def nueva_beca():
         if errores:
             return render_template('nueva_beca.html', errores=errores, beca=data)
         create(db, data)
+        flash('Beca creada correctamente', 'success')
         return redirect(url_for('auth.dashboard'))
     return render_template('nueva_beca.html')
 
@@ -115,6 +116,7 @@ def editar_beca(beca_id):
             data['id'] = beca_id
             return render_template('nueva_beca.html', errores=errores, beca=data, editando=True)
         update(db, beca_id, data)
+        flash('Beca actualizada correctamente', 'success')
         return redirect(url_for('auth.dashboard'))
 
     return render_template('nueva_beca.html', beca=beca, editando=True)
@@ -125,4 +127,5 @@ def editar_beca(beca_id):
 def logout():
     """Cierra la sesión del administrador."""
     session.clear()
+    flash('Sesión cerrada', 'success')
     return redirect(url_for('auth.login'))
