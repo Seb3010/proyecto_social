@@ -31,8 +31,8 @@ VALIDACION Y UX
   [x] T18 - Mensajes flash - Exito y error en login y formularios (depende: T09|T14|T16, prioridad: media)
 
 ESTILOS
-  [ ] T19 - Estilos publicos - CSS para listado y detalle (depende: T07|T08, prioridad: baja)
-  [ ] T20 - Estilos admin - CSS para login, dashboard y formularios (depende: T12|T13|T15, prioridad: baja)
+  [x] T19 - Estilos publicos - CSS para listado y detalle (depende: T07|T08, prioridad: baja)
+  [x] T20 - Estilos admin - CSS para login, dashboard y formularios (depende: T12|T13|T15, prioridad: baja)
   [ ] T21 - JS minimo - Vanilla JS solo si hace falta (depende: T19|T20, prioridad: baja)
 
 SEGURIDAD

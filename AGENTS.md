@@ -7,8 +7,10 @@
 ## Intencion y preferencias del usuario (no verificadas en codigo)
 - App web monolitica para mostrar informacion de becas.
 - Arquitectura MVC.
-- Frontend esperado: `HTML`, `CSS` y `vanilla JS` lo mas basico posible.
-- No usar frameworks de frontend ni librerias externas salvo que una necesidad futura verificada lo justifique.
+- Frontend esperado: `HTML`, `CSS` (con Tailwind CSS compilado localmente) y `vanilla JS` lo mas basico posible.
+- Tailwind CSS v3+ compila localmente via npm/npx (build con `npm run build:css`). Tailwind CLI se ejecuta local, no se usa el CDN.
+- Una excepcion a la regla "no frameworks": Tailwind se permite porque el equipo lo aprendio y decidio sumarlo para acelerar prototipado. Requiere node_modules y un script de build.
+- Sin otros frameworks de frontend (Bootstrap, Vue, React, etc.) ni librerias externas de JS.
 - Backend esperado: `Python`, `Flask` y `SQLite`.
 - El acceso a base de datos debe usar `sqlite3` de la libreria estandar directamente.
 - No usar ORM ni abstracciones que oculten SQL salvo que una necesidad futura verificada lo fuerce.

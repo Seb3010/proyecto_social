@@ -3,25 +3,55 @@
 {% block title %}{{ beca.title }} - Sistema de Becas{% endblock %}
 
 {% block content %}
-<h1>{{ beca.title }}</h1>
+<article class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 md:p-8">
+    <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">{{ beca.title }}</h1>
 
-<p><strong>Institución:</strong> {{ beca.institution }}</p>
-<p><strong>Ubicación:</strong> {{ beca.location }}</p>
-<p><strong>Fecha límite:</strong> {{ beca.deadline }}</p>
+    <div class="space-y-4">
+        <div>
+            <span class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Institución</span>
+            <p class="text-gray-800">{{ beca.institution }}</p>
+        </div>
 
-{% if beca.description %}
-<p><strong>Descripción:</strong></p>
-<p>{{ beca.description }}</p>
-{% endif %}
+        <div>
+            <span class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Ubicación</span>
+            <p class="text-gray-800">{{ beca.location }}</p>
+        </div>
 
-{% if beca.requirements %}
-<p><strong>Requisitos:</strong></p>
-<p>{{ beca.requirements }}</p>
-{% endif %}
+        <div>
+            <span class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Fecha límite</span>
+            <p class="text-gray-800">{{ beca.deadline }}</p>
+        </div>
 
-{% if beca.link %}
-<p><a href="{{ beca.link }}" target="_blank">Más información</a></p>
-{% endif %}
+        {% if beca.description %}
+        <div>
+            <span class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Descripción</span>
+            <p class="text-gray-700 mt-1 leading-relaxed">{{ beca.description }}</p>
+        </div>
+        {% endif %}
 
-<a href="{{ url_for('becas.listado') }}">&larr; Volver al listado</a>
+        {% if beca.requirements %}
+        <div>
+            <span class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Requisitos</span>
+            <p class="text-gray-700 mt-1 leading-relaxed">{{ beca.requirements }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        {% if beca.link %}
+        <a href="{{ beca.link }}" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center justify-center px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+            Más información
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+        </a>
+        {% endif %}
+
+        <a href="{{ url_for('becas.listado') }}"
+           class="inline-flex items-center justify-center px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+            &larr; Volver al listado
+        </a>
+    </div>
+</article>
 {% endblock %}

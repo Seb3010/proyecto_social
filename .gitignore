@@ -1,2 +1,10 @@
 # Local Pi runtime state
 .atl/
+
+# Node
+node_modules/
+
+# Python
+instance/
+__pycache__/
+*.pyc

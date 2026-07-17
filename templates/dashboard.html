@@ -3,47 +3,62 @@
 {% block title %}Panel de Administración{% endblock %}
 
 {% block content %}
-<header>
-    <h1>Panel de Administración</h1>
-    <p>Bienvenido, {{ admin.username }}</p>
-    
-    <p>
-        <a href="{{ url_for('auth.nueva_beca') }}">+ Nueva beca</a>
-    </p>
-    
-    <form action="{{ url_for('auth.logout') }}" method="POST" style="display: inline;">
-        <button type="submit">Cerrar sesión</button>
-    </form>
+<header class="flex items-center justify-between mb-6">
+    <div>
+        <h1 class="text-3xl font-bold">Panel de Administración</h1>
+        <p class="text-gray-600 mt-1">Bienvenido, {{ admin.username }}</p>
+    </div>
+    <div class="flex items-center gap-3">
+        <a href="{{ url_for('auth.nueva_beca') }}"
+           class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">
+            + Nueva beca
+        </a>
+        <form action="{{ url_for('auth.logout') }}" method="POST" class="inline">
+            <button type="submit" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-md text-sm font-medium">
+                Cerrar sesión
+            </button>
+        </form>
+    </div>
 </header>
 
-<h2>Becas</h2>
+<h2 class="text-xl font-semibold mb-4">Becas</h2>
 
 {% if becas %}
-    <table>
-        <thead>
-            <tr>
-                <th>Título</th>
-                <th>Estado</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for beca in becas %}
-            <tr>
-                <td><a href="{{ url_for('becas.detalle', beca_id=beca.id) }}">{{ beca.title }}</a></td>
-                <td>
-                    {% if beca.is_published == 1 %}
-                        Publicado
-                    {% else %}
-                        Borrador
-                    {% endif %}
-                </td>
-                <td><a href="{{ url_for('auth.editar_beca', beca_id=beca.id) }}">Editar</a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="bg-white shadow-md rounded-lg overflow-hidden">
+        <table class="min-w-full">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">Título</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">Estado</th>
+                    <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+                {% for beca in becas %}
+                <tr>
+                    <td class="px-4 py-3">
+                        <a href="{{ url_for('becas.detalle', beca_id=beca.id) }}" class="text-blue-600 hover:text-blue-800">
+                            {{ beca.title }}
+                        </a>
+                    </td>
+                    <td class="px-4 py-3">
+                        {% if beca.is_published == 1 %}
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-medium">Publicado</span>
+                        {% else %}
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-medium">Borrador</span>
+                        {% endif %}
+                    </td>
+                    <td class="px-4 py-3">
+                        <a href="{{ url_for('auth.editar_beca', beca_id=beca.id) }}" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                            Editar
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% else %}
-    <p>No hay becas todavía.</p>
+    <p class="text-gray-600 bg-white p-6 rounded-lg shadow text-center">No hay becas todavía.</p>
 {% endif %}
 {% endblock %}

@@ -3,7 +3,7 @@
 ## Objetivo
 - Construir una app web monolitica para mostrar becas disponibles.
 - Usar arquitectura MVC.
-- Mantener el frontend con `HTML`, `CSS` y `vanilla JS` lo mas basico posible.
+- Mantener el frontend con `HTML`, `CSS` (con Tailwind CSS compilado localmente) y `vanilla JS` lo mas basico posible.
 - Mantener el backend con `Python`, `Flask` y `sqlite3` directo, sin ORM.
 
 ## Alcance del MVP
@@ -14,8 +14,8 @@
 - Admin puede crear y editar becas publicadas.
 
 ## Restricciones tecnicas
-- No usar frameworks de frontend.
-- No usar librerias JS salvo necesidad futura verificada.
+- Una excepcion a la regla "no frameworks de frontend": Tailwind CSS v3+ se permite porque el equipo lo aprendio y decidio sumarlo. Compila localmente via npm/npx (script `npm run build:css`). Tailwind CLI se ejecuta local, no se usa el CDN. Requiere `node_modules/` y un script de build.
+- Sin otros frameworks de frontend (Bootstrap, Vue, React, etc.) ni librerias externas de JS.
 - No usar ORM.
 - Acceso a base de datos con `sqlite3` de la libreria estandar.
 - Escribir SQL de forma explicita.

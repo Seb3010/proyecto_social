@@ -3,58 +3,66 @@
 {% block title %}{{ "Editar Beca" if editando else "Nueva Beca" }}{% endblock %}
 
 {% block content %}
-{% if editando %}
-    <h1>Editar Beca</h1>
-{% else %}
-    <h1>Nueva Beca</h1>
-{% endif %}
+<div class="max-w-2xl mx-auto">
+    <h1 class="text-3xl font-bold mb-6">{{ "Editar Beca" if editando else "Nueva Beca" }}</h1>
 
-{% if errores %}
-    <div class="errores">
-        <ul>
-        {% for error in errores %}
-            <li>{{ error }}</li>
-        {% endfor %}
-        </ul>
-    </div>
-{% endif %}
+    {% if errores %}
+        <div class="bg-red-100 border border-red-300 text-red-800 px-4 py-3 rounded mb-4">
+            <ul class="list-disc list-inside">
+                {% for error in errores %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
 
-<form action="{{ url_for('auth.editar_beca', beca_id=beca['id']) if editando else url_for('auth.nueva_beca') }}" method="POST">
-    <p>
-        <label for="title">Título *</label>
-        <input type="text" id="title" name="title" value="{{ beca['title'] if beca else '' }}" required>
-    </p>
-    <p>
-        <label for="institution">Institución *</label>
-        <input type="text" id="institution" name="institution" value="{{ beca['institution'] if beca else '' }}" required>
-    </p>
-    <p>
-        <label for="description">Descripción</label>
-        <textarea id="description" name="description" rows="4">{{ beca['description'] if beca else '' }}</textarea>
-    </p>
-    <p>
-        <label for="requirements">Requisitos</label>
-        <textarea id="requirements" name="requirements" rows="4">{{ beca['requirements'] if beca else '' }}</textarea>
-    </p>
-    <p>
-        <label for="deadline">Fecha límite</label>
-        <input type="text" id="deadline" name="deadline" value="{{ beca['deadline'] if beca else '' }}" placeholder="Ej: 2026-12-31">
-    </p>
-    <p>
-        <label for="location">Ubicación</label>
-        <input type="text" id="location" name="location" value="{{ beca['location'] if beca else '' }}">
-    </p>
-    <p>
-        <label for="link">Link</label>
-        <input type="url" id="link" name="link" value="{{ beca['link'] if beca else '' }}">
-    </p>
-    <p>
-        <label for="is_published">Publicar inmediatamente</label>
-        <input type="checkbox" id="is_published" name="is_published" {% if beca and beca['is_published'] %}checked{% endif %}>
-    </p>
-    <p>
-        <button type="submit">{{ "Actualizar" if editando else "Crear beca" }}</button>
-        <a href="{{ url_for('auth.dashboard') }}">Cancelar</a>
-    </p>
-</form>
+    <form action="{{ url_for('auth.editar_beca', beca_id=beca['id']) if editando else url_for('auth.nueva_beca') }}" method="POST" class="bg-white p-6 rounded-lg shadow-md space-y-4">
+        <div>
+            <label for="title" class="block text-sm font-medium text-gray-700">Título *</label>
+            <input type="text" id="title" name="title" value="{{ beca['title'] if beca else '' }}" required
+                   class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+            <label for="institution" class="block text-sm font-medium text-gray-700">Institución *</label>
+            <input type="text" id="institution" name="institution" value="{{ beca['institution'] if beca else '' }}" required
+                   class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+            <label for="description" class="block text-sm font-medium text-gray-700">Descripción</label>
+            <textarea id="description" name="description" rows="4"
+                      class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">{{ beca['description'] if beca else '' }}</textarea>
+        </div>
+        <div>
+            <label for="requirements" class="block text-sm font-medium text-gray-700">Requisitos</label>
+            <textarea id="requirements" name="requirements" rows="4"
+                      class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">{{ beca['requirements'] if beca else '' }}</textarea>
+        </div>
+        <div>
+            <label for="deadline" class="block text-sm font-medium text-gray-700">Fecha límite</label>
+            <input type="text" id="deadline" name="deadline" value="{{ beca['deadline'] if beca else '' }}" placeholder="Ej: 2026-12-31"
+                   class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+            <label for="location" class="block text-sm font-medium text-gray-700">Ubicación</label>
+            <input type="text" id="location" name="location" value="{{ beca['location'] if beca else '' }}"
+                   class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+            <label for="link" class="block text-sm font-medium text-gray-700">Link</label>
+            <input type="url" id="link" name="link" value="{{ beca['link'] if beca else '' }}"
+                   class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div class="flex items-center">
+            <input type="checkbox" id="is_published" name="is_published" {% if beca and beca['is_published'] %}checked{% endif %}
+                   class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+            <label for="is_published" class="ml-2 block text-sm text-gray-700">Publicar inmediatamente</label>
+        </div>
+        <div class="flex items-center gap-3 pt-4">
+            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-md">
+                {{ "Actualizar" if editando else "Crear beca" }}
+            </button>
+            <a href="{{ url_for('auth.dashboard') }}" class="text-gray-600 hover:text-gray-800 px-4 py-2">Cancelar</a>
+        </div>
+    </form>
+</div>
 {% endblock %}
