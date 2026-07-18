@@ -31,6 +31,6 @@
 - Cualquier script de carga/edicion de becas o migraciones.
 
 ## Convenciones del equipo (verificadas en código)
-- **task_list.csv NO es fuente de verdad**: Antes de confiar en el estado de una tarea ([x]), verificar siempre contra el código real y la base de datos. El CSV se actualiza DESPUÉS de que el código está verificado.
+- **task_list.md NO es fuente de verdad**: Antes de confiar en el estado de una tarea ([x]), verificar siempre contra el código real y la base de datos. El CSV se actualiza DESPUÉS de que el código está verificado.
 - Formato: `[x]` = completada, `[ ]` = pendiente.
 - Para verificar una tarea de base de datos: ejecutar consulta SQL directa o leer los archivos de esquema/código correspondientes.
