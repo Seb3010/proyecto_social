@@ -33,12 +33,12 @@ VALIDACION Y UX
 ESTILOS
   [x] T19 - Estilos publicos - CSS para listado y detalle (depende: T07|T08, prioridad: baja)
   [x] T20 - Estilos admin - CSS para login, dashboard y formularios (depende: T12|T13|T15, prioridad: baja)
-  [ ] T21 - JS minimo - Vanilla JS solo si hace falta (depende: T19|T20, prioridad: baja)
+  [x] T21 - JS minimo - Vanilla JS solo si hace falta (depende: T19|T20, prioridad: baja)
 
 SEGURIDAD
-  [ ] T22 - Hash contrasenas - Almacenar password con hash seguro (depende: T09, prioridad: alta)
-  [ ] T23 - Estado publicacion - Solo becas publicadas en vista publica (depende: T05|T07, prioridad: alta)
+  [x] T22 - Hash contrasenas - Almacenar password con hash seguro (depende: T09, prioridad: alta)
+  [x] T23 - Estado publicacion - Solo becas publicadas en vista publica (depende: T05|T07, prioridad: alta)
 
 VERIFICACION
-  [ ] T24 - Probar flujo publico - Listado y detalle de becas (depende: T07|T08|T23, prioridad: media)
-  [ ] T25 - Probar flujo admin - Login, alta y edicion (depende: T09|T14|T16|T22, prioridad: media)
+  [x] T24 - Probar flujo publico - Listado y detalle de becas (depende: T07|T08|T23, prioridad: media)
+  [x] T25 - Probar flujo admin - Login, alta y edicion (depende: T09|T14|T16|T22, prioridad: media)

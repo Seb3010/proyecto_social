@@ -86,6 +86,7 @@ def nueva_beca():
         if errores:
             return render_template('nueva_beca.html', errores=errores, beca=data)
         create(db, data)
+        db.commit()
         flash('Beca creada correctamente', 'success')
         return redirect(url_for('auth.dashboard'))
     return render_template('nueva_beca.html')
@@ -116,6 +117,7 @@ def editar_beca(beca_id):
             data['id'] = beca_id
             return render_template('nueva_beca.html', errores=errores, beca=data, editando=True)
         update(db, beca_id, data)
+        db.commit()
         flash('Beca actualizada correctamente', 'success')
         return redirect(url_for('auth.dashboard'))
 

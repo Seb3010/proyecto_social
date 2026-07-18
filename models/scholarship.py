@@ -137,7 +137,7 @@ def delete(db, beca_id):
     return cursor.rowcount
 
 
-def search(db, query):
+def search(db, query, published_only=False):
     """
     Busca becas cuyo título, institución o descripción contengan el texto
     indicado. La búsqueda es case-insensitive (depende de collation de
@@ -146,12 +146,23 @@ def search(db, query):
     Args:
         db: Conexión activa a SQLite (``sqlite3.Connection``).
         query: Término de búsqueda (se envuelve con ``%`` automáticamente).
+        published_only: Si es ``True``, solo devuelve becas con
+            ``is_published = 1``.
 
     Returns:
         list[sqlite3.Row]: Lista de filas que coinciden con la búsqueda,
         ordenadas por ``created_at`` descendente.
     """
     pattern = f'%{query}%'
+    if published_only:
+        return db.execute(
+            'SELECT * FROM scholarships'
+            ' WHERE is_published = 1'
+            ' AND (title LIKE ? OR institution LIKE ? OR description LIKE ?)'
+            ' ORDER BY created_at DESC',
+            (pattern, pattern, pattern),
+        ).fetchall()
+
     return db.execute(
         'SELECT * FROM scholarships'
         ' WHERE title LIKE ? OR institution LIKE ? OR description LIKE ?'

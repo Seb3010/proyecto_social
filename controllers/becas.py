@@ -25,7 +25,7 @@ def buscar():
     db = get_db()
     q = request.args.get('q', '').strip()
     if q:
-        becas = search(db, q)
+        becas = search(db, q, published_only=True)
     else:
         becas = get_all(db, published_only=True)
     return render_template('listado.html', becas=becas, query=q)
@@ -36,6 +36,6 @@ def detalle(beca_id):
     """Muestra el detalle completo de una beca."""
     db = get_db()
     beca = get_by_id(db, beca_id)
-    if beca is None:
+    if beca is None or beca['is_published'] != 1:
         abort(404)
     return render_template('detalle.html', beca=beca)
